@@ -1,8 +1,6 @@
-# marauder-template
+# marauder-electron-templ
 
-marauder 工程模板，适用于单页与多页项目。
-
-为了保证多人开发时依赖安装的一致性，推荐使用 [yarn](https://yarnpkg.com/zh-Hans/) 作为包管理工具
+marauder electron 项目开发模板，包括ci打包，vscode下调试。
 
 ## 命令
 
