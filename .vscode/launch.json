@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "启动程序",
+        "program": "${workspaceRoot}/node_modules/@mfelibs/ci-runner-script-electron/src.js",
+        "stopOnEntry": false,
+        "cwd": "${workspaceRoot}",
+        "runtimeExecutable": null,
+        "args": [
+          "fengwan@staff.sina.com.cn","fengwan","https://gitlab.weibo.cn/SINA_MFE/worldcupguess","tag__index__1.0.0","projectname","electron_deploy","excute"
+        ]
+    },
+      {
+        "name": "Debug Main Process",
+        "type": "node",
+        "request": "launch",
+        "cwd": "${workspaceRoot}",
+        "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
+        "windows": {
+          "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron.cmd"
+        },
+        "args" : ["."]
+      }
+    ]
+  }

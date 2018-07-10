@@ -1,0 +1,63 @@
+stages:
+  - dummy
+  - test
+  - deploy
+
+Ready Step:
+  stage: dummy
+  script:
+    - echo "Ready，it's time to Electron workflow"
+  tags:
+    - SMFE
+  only:
+    - /^tag__.+__.+/
+
+electron_test:
+  stage: test
+  script:
+    - echo $GITLAB_USER_EMAIL $USER $CI_PROJECT_URL $CI_COMMIT_REF_NAME $CI_PROJECT_NAME $CI_COMMIT_REF_SLUG $CI_BUILD_BEFORE_SHA $CI_BUILD_ID $CI_PROJECT_PATH
+    - cnpm install @mfelibs/ci-runner-script-electron
+    - node ./node_modules/@mfelibs/ci-runner-script-electron/index.js $GITLAB_USER_EMAIL $USER $CI_PROJECT_URL $CI_COMMIT_REF_NAME $CI_PROJECT_NAME simulate excute $CI_BUILD_BEFORE_SHA $CI_BUILD_ID $CI_PROJECT_PATH
+  tags:
+    - SMFE
+  when: manual
+  only:
+    - /^tag__.+__.+/
+
+package_test:
+  stage: test
+  script:
+    - echo $GITLAB_USER_EMAIL $USER $CI_PROJECT_URL $CI_COMMIT_REF_NAME $CI_PROJECT_NAME $CI_COMMIT_REF_SLUG $CI_BUILD_BEFORE_SHA $CI_BUILD_ID $CI_PROJECT_PATH
+    - cnpm install @mfelibs/ci-runner-script-electron
+    - node ./node_modules/@mfelibs/ci-runner-script-electron/index.js $GITLAB_USER_EMAIL $USER $CI_PROJECT_URL $CI_COMMIT_REF_NAME $CI_PROJECT_NAME simulate excute $CI_BUILD_BEFORE_SHA $CI_BUILD_ID $CI_PROJECT_PATH
+  tags:
+    - SMFE
+  when: manual
+  only:
+    - /^tag__.+__.+/
+
+
+electron_deploy:
+  stage: deploy
+  script:
+    - echo $GITLAB_USER_EMAIL $USER $CI_PROJECT_URL $CI_COMMIT_REF_NAME $CI_PROJECT_NAME $CI_COMMIT_REF_SLUG $CI_BUILD_BEFORE_SHA $CI_BUILD_ID $CI_PROJECT_PATH
+    - cnpm install @mfelibs/ci-runner-script-electron
+    - node ./node_modules/@mfelibs/ci-runner-script-electron/index.js $GITLAB_USER_EMAIL $USER $CI_PROJECT_URL $CI_COMMIT_REF_NAME $CI_PROJECT_NAME nogrey excute $CI_BUILD_BEFORE_SHA $CI_BUILD_ID $CI_PROJECT_PATH
+  tags:
+    - SMFE
+  when: manual
+  only:
+    - /^tag__.+__.+/
+
+
+package_deploy:
+  stage: deploy
+  script:
+    - echo $GITLAB_USER_EMAIL $USER $CI_PROJECT_URL $CI_COMMIT_REF_NAME $CI_PROJECT_NAME $CI_COMMIT_REF_SLUG $CI_BUILD_BEFORE_SHA $CI_BUILD_ID $CI_PROJECT_PATH
+    - cnpm install @mfelibs/ci-runner-script-electron
+    - node ./node_modules/@mfelibs/ci-runner-script-electron/index.js $GITLAB_USER_EMAIL $USER $CI_PROJECT_URL $CI_COMMIT_REF_NAME $CI_PROJECT_NAME nogrey excute $CI_BUILD_BEFORE_SHA $CI_BUILD_ID $CI_PROJECT_PATH
+  tags:
+    - SMFE
+  when: manual
+  only:
+    - /^tag__.+__.+/
